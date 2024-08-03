@@ -59,17 +59,17 @@ class UserModel(BaseModel):
 
     model_config = ConfigDict(from_attributes=True)
 
-    def is_admin(self):
+    def has_admin_role(self):
         return self.role == "admin"
 
-    def is_user(self):
+    def has_user_role(self):
         return self.role == "user"
 
-    def is_pending(self):
+    def has_pending_role(self):
         return self.role == "pending"
 
     def is_verified(self):
-        return self.is_admin() or self.is_user()
+        return self.has_admin_role() or self.has_user_role()
 
 
 ####################

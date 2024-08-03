@@ -137,7 +137,7 @@ def get_verified_user(user=Depends(get_current_user)) -> UserModel:
 
 
 def get_admin_user(user=Depends(get_current_user)) -> UserModel:
-    if not user.is_admin():
+    if not user.has_admin_role():
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail=ERROR_MESSAGES.ACCESS_PROHIBITED,
